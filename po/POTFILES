@@ -10,6 +10,8 @@ src/widgets/chatArea.vala
 src/widgets/serverSidebar.vala
 src/widgets/channelList.vala
 src/widgets/messageRow.vala
+src/widgets/emojiPicker.vala
+src/widgets/messageEntry.vala
 src/windows/Window.vala
 src/windows/content/Box.vala
 src/windows/content/Default.vala
