@@ -1,4 +1,4 @@
-project('com.github.JanGalek.vala-application-template', 'vala', 'c',
+project('com.github.OpenHlas.client', 'vala', 'c',
     version: '0.1.0',
     meson_version: '>= 1.0.0'
 )

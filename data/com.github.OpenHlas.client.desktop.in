@@ -6,6 +6,6 @@ Name=My App
 Comment=Proves that we can use Vala and Gtk
 Categories=Development;Education;
 
-Icon=com.github.JanGalek.vala-application-template
-Exec=com.github.JanGalek.vala-application-template
+Icon=com.github.OpenHlas.client
+Exec=com.github.OpenHlas.client
 Terminal=false

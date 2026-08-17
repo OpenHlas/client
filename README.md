@@ -1,4 +1,4 @@
-# Vala Application Template
+# OpenHlas client
 
 A minimal, opinionated template for building desktop applications with Vala and GTK. This repository provides a simple project structure, build scripts, and examples to get you started quickly.
 
@@ -50,6 +50,14 @@ Usage example:
 
     make build
     make run
+
+Development environment:
+
+    OPENHLAS_ENV=dev make build-run
+
+`OPENHLAS_ENV=dev` enables the in-memory mock master client. The default for the
+Makefile run target is `dev`; use `OPENHLAS_ENV=production make run` to verify
+the production path. Mock data is never selected for other environment values.
 
 3. Run the application:
 	./build/src/vala_application_template

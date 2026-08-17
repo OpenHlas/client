@@ -31,7 +31,7 @@ namespace App {
         public override void activate () {
             var display = Gdk.Display.get_default ();
 
-            Gtk.IconTheme.get_for_display (display).add_resource_path ("/com/github/JanGalek/vala-application-template");
+            Gtk.IconTheme.get_for_display (display).add_resource_path ("/com/github/OpenHlas/client");
 
             style_manager.set_color_scheme (Adw.ColorScheme.FORCE_DARK);
 
@@ -67,7 +67,7 @@ namespace App {
                 this.progress_bar.fraction = 1.0;
                 this.progress_bar.text = "Hotovo!";
             } catch (Error e) {
-                this.progress_bar.text = "Chyba: " + e.message;
+                this.progress_bar.text = "Error: " + e.message;
             }
 
             this.download_btn.sensitive = true;

@@ -1,5 +1,23 @@
-data/com.github.JanGalek.vala-application-template.desktop.in
-data/com.github.JanGalek.vala-application-template.metainfo.xml.in
-src/main.vala
+# This file is generated automatic
+data/com.github.OpenHlas.client.desktop.in
+data/com.github.OpenHlas.client.metainfo.xml.in
 src/app/Application.vala
 src/dialogs/About.vala
+src/main.vala
+src/utils/Downloader.vala
+src/widgets/chatArea.vala
+src/widgets/serverSidebar.vala
+src/widgets/channelList.vala
+src/widgets/messageRow.vala
+src/windows/Window.vala
+src/windows/content/Box.vala
+src/windows/header/Box.vala
+src/services/masterClient.vala
+src/services/nodeClient.vala
+src/services/audioEngine.vala
+src/services/iMasterClient.vala
+src/services/MockMasterClient.vala
+src/models/user.vala
+src/models/channel.vala
+src/models/server.vala
+src/models/message.vala

@@ -4,6 +4,8 @@ sources = files(
 
 subdir('app')
 subdir('dialogs')
+subdir('models')
+subdir('services')
 subdir('widgets')
 subdir('utils')
 subdir('windows')
@@ -15,12 +17,14 @@ executable(
     sources,
     dependencies: [
         dependency('gtk4'),
-        dependency('glib-2.0'),
+        dependency('glib-2.0', version: '>= 2.70'),
         dependency('gio-2.0'),
         dependency('gobject-2.0'),
         dependency('libarchive'),
         dependency('glib-2.0'),
         dependency('libsoup-3.0'),
+        dependency('json-glib-1.0'),
+        dependency('gee-0.8'),
         dependency('libadwaita-1', version: '>= 1.9'),
         meson.get_compiler('c').find_library('m', required : false),
         config_dep,

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.OpenHlas.client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-04 16:02+0200\n"
+"POT-Creation-Date: 2026-08-18 00:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,4 +43,52 @@ msgstr ""
 
 #: src/dialogs/About.vala:32
 msgid "Special thanks to"
+msgstr ""
+
+#: src/widgets/chatArea.vala:19
+msgid "# general"
+msgstr ""
+
+#: src/widgets/chatArea.vala:28
+msgid "Jan Galek - Welcome to OpenHlas!"
+msgstr ""
+
+#: src/widgets/chatArea.vala:29
+msgid "Jan Galek - Select a channel to start chatting."
+msgstr ""
+
+#: src/widgets/chatArea.vala:56
+msgid "Write a message"
+msgstr ""
+
+#: src/windows/Window.vala:171
+msgid "Channels"
+msgstr ""
+
+#: src/windows/Window.vala:208
+msgid "Servers"
+msgstr ""
+
+#: src/windows/Window.vala:209
+msgid "Chat"
+msgstr ""
+
+#: src/windows/header/Box.vala:12
+msgid "_Preferences"
+msgstr ""
+
+#: src/windows/header/Box.vala:13
+msgid "_Keyboard Shortcuts"
+msgstr ""
+
+#: src/windows/header/Box.vala:14
+msgid "_Donate"
+msgstr ""
+
+#: src/windows/header/Box.vala:15
+msgid "_About"
+msgstr ""
+
+#: src/windows/header/Box.vala:18
+msgid "Main Menu"
 msgstr ""

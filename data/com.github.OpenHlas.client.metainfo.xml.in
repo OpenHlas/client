@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>io.github.myteam.myapp</id>
+  <id>com.github.OpenHlas.client</id>
 
   <name>My App</name>
   <summary>Proves that we can use Vala and Gtk</summary>
@@ -14,5 +14,5 @@
     </p>
   </description>
 
-  <launchable type="desktop-id">io.github.myteam.myapp.desktop</launchable>
+  <launchable type="desktop-id">com.github.OpenHlas.client.desktop</launchable>
 </component>

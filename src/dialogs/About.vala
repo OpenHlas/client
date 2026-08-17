@@ -23,8 +23,8 @@ namespace App.Dialogs {
             dialog.set_version ("v" + Config.APP_VERSION);
 
             dialog.set_comments (_("Vala application template"));
-            dialog.add_link ("GitHub", "https://github.com/JanGalek/vala-application-template");
-            dialog.set_issue_url ("https://github.com/JanGalek/vala-application-template/issues/new/choose");
+            dialog.add_link ("GitHub", "https://github.com/OpenHlas/client");
+            dialog.set_issue_url ("https://github.com/OpenHlas/client/issues/new/choose");
             dialog.set_copyright (get_copyright ());
             dialog.set_license_type (Gtk.License.GPL_3_0);
             dialog.set_developers (DEVELOPERS);

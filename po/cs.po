@@ -1,14 +1,14 @@
-#: data/com.github.JanGalek.vala-application-template.desktop.in:5
-#: data/com.github.JanGalek.vala-application-template.metainfo.xml.in:5
+#: data/com.github.OpenHlas.client.desktop.in:5
+#: data/com.github.OpenHlas.client.metainfo.xml.in:5
 msgid "My App"
 msgstr ""
 
-#: data/com.github.JanGalek.vala-application-template.desktop.in:6
-#: data/com.github.JanGalek.vala-application-template.metainfo.xml.in:6
+#: data/com.github.OpenHlas.client.desktop.in:6
+#: data/com.github.OpenHlas.client.metainfo.xml.in:6
 msgid "Proves that we can use Vala and Gtk"
 msgstr ""
 
-#: data/com.github.JanGalek.vala-application-template.metainfo.xml.in:12
+#: data/com.github.OpenHlas.client.metainfo.xml.in:12
 msgid ""
 "A quick summary of your app's main selling points and features. Just a "
 "couple sentences per paragraph is best"
@@ -24,4 +24,52 @@ msgstr ""
 
 #: src/dialogs/About.vala:32
 msgid "Special thanks to"
+msgstr ""
+
+#: src/widgets/chatArea.vala:19
+msgid "# general"
+msgstr ""
+
+#: src/widgets/chatArea.vala:28
+msgid "Jan Galek - Welcome to OpenHlas!"
+msgstr ""
+
+#: src/widgets/chatArea.vala:29
+msgid "Jan Galek - Select a channel to start chatting."
+msgstr ""
+
+#: src/widgets/chatArea.vala:56
+msgid "Write a message"
+msgstr ""
+
+#: src/windows/Window.vala:171
+msgid "Channels"
+msgstr ""
+
+#: src/windows/Window.vala:208
+msgid "Servers"
+msgstr ""
+
+#: src/windows/Window.vala:209
+msgid "Chat"
+msgstr ""
+
+#: src/windows/header/Box.vala:12
+msgid "_Preferences"
+msgstr ""
+
+#: src/windows/header/Box.vala:13
+msgid "_Keyboard Shortcuts"
+msgstr ""
+
+#: src/windows/header/Box.vala:14
+msgid "_Donate"
+msgstr ""
+
+#: src/windows/header/Box.vala:15
+msgid "_About"
+msgstr ""
+
+#: src/windows/header/Box.vala:18
+msgid "Main Menu"
 msgstr ""

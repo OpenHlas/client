@@ -17,7 +17,7 @@ translations:
 
 run: 
 	cd build && ninja
-	./build/src/$$(grep -oP "project\('\K[^']+" meson.build | tr '[:upper:]' '[:lower:]' | awk -F. '{print $$NF}')
+	OPENHLAS_ENV=$${OPENHLAS_ENV:-dev} ./build/src/$$(grep -oP "project\('\K[^']+" meson.build | tr '[:upper:]' '[:lower:]' | awk -F. '{print $$NF}')
 
 build-run: gen-potfiles clean build translations run
 
