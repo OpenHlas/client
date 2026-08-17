@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.OpenHlas.client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-18 00:16+0200\n"
+"POT-Creation-Date: 2026-08-18 01:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,31 +45,67 @@ msgstr ""
 msgid "Special thanks to"
 msgstr ""
 
-#: src/widgets/chatArea.vala:19
+#: src/utils/Emoji.vala:252
+msgid "Faces"
+msgstr ""
+
+#: src/utils/Emoji.vala:253
+msgid "Reactions"
+msgstr ""
+
+#: src/utils/Emoji.vala:254
+msgid "Gestures"
+msgstr ""
+
+#: src/utils/Emoji.vala:255
+msgid "Objects"
+msgstr ""
+
+#: src/utils/Emoji.vala:256
+msgid "Nature"
+msgstr ""
+
+#: src/utils/Emoji.vala:257
+msgid "Food"
+msgstr ""
+
+#: src/utils/Emoji.vala:258
+msgid "Activities"
+msgstr ""
+
+#: src/widgets/chatArea.vala:26
 msgid "# general"
 msgstr ""
 
-#: src/widgets/chatArea.vala:28
+#: src/widgets/chatArea.vala:35
 msgid "Jan Galek - Welcome to OpenHlas!"
 msgstr ""
 
-#: src/widgets/chatArea.vala:29
+#: src/widgets/chatArea.vala:36
 msgid "Jan Galek - Select a channel to start chatting."
 msgstr ""
 
-#: src/widgets/chatArea.vala:56
+#: src/widgets/chatArea.vala:74
 msgid "Write a message"
 msgstr ""
 
-#: src/windows/Window.vala:171
+#: src/widgets/chatArea.vala:81
+msgid "Insert emoji"
+msgstr ""
+
+#: src/widgets/chatArea.vala:85
+msgid "Send"
+msgstr ""
+
+#: src/windows/content/Default.vala:63
 msgid "Channels"
 msgstr ""
 
-#: src/windows/Window.vala:208
+#: src/windows/content/Default.vala:100
 msgid "Servers"
 msgstr ""
 
-#: src/windows/Window.vala:209
+#: src/windows/content/Default.vala:101
 msgid "Chat"
 msgstr ""
 

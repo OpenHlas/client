@@ -5,12 +5,15 @@ src/app/Application.vala
 src/dialogs/About.vala
 src/main.vala
 src/utils/Downloader.vala
+src/utils/Emoji.vala
 src/widgets/chatArea.vala
 src/widgets/serverSidebar.vala
 src/widgets/channelList.vala
 src/widgets/messageRow.vala
 src/windows/Window.vala
 src/windows/content/Box.vala
+src/windows/content/Default.vala
+src/windows/content/View.vala
 src/windows/header/Box.vala
 src/services/masterClient.vala
 src/services/nodeClient.vala
