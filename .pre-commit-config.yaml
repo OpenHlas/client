@@ -1,0 +1,14 @@
+repos:
+  - repo: https://github.com/vala-lang/vala-lint
+    rev: 0.1.0
+    hooks:
+    - id: vala-lint
+      args: [--config=.vala-lint.conf]
+  - repo: https://github.com/gouef/commit-lint-action
+    rev: v1.1.2
+    hooks:
+      - id: check-commit-msg
+        args: [
+          "-p", "Add|Fix|Update|Remove|Refactor|Docs|Test|Improve|Merge|Bump",
+          "-l", "6"
+        ]

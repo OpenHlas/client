@@ -1,0 +1,27 @@
+#: data/com.github.JanGalek.vala-application-template.desktop.in:5
+#: data/com.github.JanGalek.vala-application-template.metainfo.xml.in:5
+msgid "My App"
+msgstr ""
+
+#: data/com.github.JanGalek.vala-application-template.desktop.in:6
+#: data/com.github.JanGalek.vala-application-template.metainfo.xml.in:6
+msgid "Proves that we can use Vala and Gtk"
+msgstr ""
+
+#: data/com.github.JanGalek.vala-application-template.metainfo.xml.in:12
+msgid ""
+"A quick summary of your app's main selling points and features. Just a "
+"couple sentences per paragraph is best"
+msgstr ""
+
+#: src/dialogs/About.vala:25
+msgid "Vala application template"
+msgstr ""
+
+#: src/dialogs/About.vala:31
+msgid "translator-credits"
+msgstr ""
+
+#: src/dialogs/About.vala:32
+msgid "Special thanks to"
+msgstr ""

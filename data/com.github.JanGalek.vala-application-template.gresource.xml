@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+    <gresource prefix="/com/github/JanGalek/vala-application-template/icons">
+        <file alias="scalable/apps/com.github.JanGalek.vala-application-template.svg">icons/hicolor/scalable/apps/com.github.JanGalek.vala-application-template.svg</file>
+        <file alias="symbolic/apps/com.github.JanGalek.vala-application-template-symbolic.svg">icons/hicolor/symbolic/apps/com.github.JanGalek.vala-application-template-symbolic.svg</file>
+        <file alias="scalable/actions/bars-symbolic.svg">icons/bars.svg</file>
+    </gresource>
+</gresources>

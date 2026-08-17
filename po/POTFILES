@@ -1,0 +1,5 @@
+data/com.github.JanGalek.vala-application-template.desktop.in
+data/com.github.JanGalek.vala-application-template.metainfo.xml.in
+src/main.vala
+src/app/Application.vala
+src/dialogs/About.vala
