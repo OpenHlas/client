@@ -57,7 +57,7 @@ namespace App.Services {
         }
 
         public async bool login_async (string username, string password) throws GLib.Error {
-            yield sleep_async (300);
+            yield sleep_async (3500);
 
             if (username == "admin" && password == "admin") {
                 auth_token = "mock_jwt_token_123456789";

@@ -16,6 +16,7 @@ src/windows/Window.vala
 src/windows/content/Box.vala
 src/windows/content/Default.vala
 src/windows/content/View.vala
+src/windows/content/Loading.vala
 src/windows/header/Box.vala
 src/services/masterClient.vala
 src/services/nodeClient.vala

@@ -26,10 +26,11 @@ executable(
         dependency('json-glib-1.0'),
         dependency('gee-0.8'),
         dependency('libadwaita-1', version: '>= 1.9'),
+        dependency('webkitgtk-6.0'),
         meson.get_compiler('c').find_library('m', required : false),
         config_dep,
     ],
     include_directories : config_inc,
-    vala_args: ['--pkg', 'libadwaita-1'],
+    vala_args: ['--pkg', 'libadwaita-1', '--pkg', 'webkitgtk-6.0'],
     install: true
 )

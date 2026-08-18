@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe"/>
+      <stop offset="50%" stop-color="#4facfe"/>
+      <stop offset="100%" stop-color="#0052d4"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38ef7d"/>
+      <stop offset="100%" stop-color="#11998e"/>
+    </linearGradient>
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)"/>
+  <circle cx="256" cy="256" r="180" fill="url(#brandGrad)" opacity="0.15" filter="blur(30px)"/>
+
+  <g filter="url(#dropShadow)">
+    <path d="M 256 96 A 160 160 0 1 1 143 143" fill="none" stroke="url(#brandGrad)" stroke-width="28" stroke-linecap="round">
+      <animateTransform attributeName="transform" type="rotate" values="0 256 256;360 256 256" dur="3s" repeatCount="indefinite"/>
+    </path>
+
+    <rect x="200" y="216" width="24" height="80" rx="12" fill="url(#brandGrad)">
+      <animate attributeName="y" values="216;236;216;196;216" dur="1.2s" begin="0s" repeatCount="indefinite"/>
+      <animate attributeName="height" values="80;40;80;120;80" dur="1.2s" begin="0s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="244" y="176" width="24" height="160" rx="12" fill="url(#brandGrad)">
+      <animate attributeName="y" values="176;216;176;136;176" dur="1.2s" begin="0.15s" repeatCount="indefinite"/>
+      <animate attributeName="height" values="160;80;160;240;160" dur="1.2s" begin="0.15s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="288" y="200" width="24" height="112" rx="12" fill="url(#brandGrad)">
+      <animate attributeName="y" values="200;228;200;172;200" dur="1.2s" begin="0.3s" repeatCount="indefinite"/>
+      <animate attributeName="height" values="112;56;112;168;112" dur="1.2s" begin="0.3s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="332" y="232" width="24" height="48" rx="12" fill="url(#brandGrad)">
+      <animate attributeName="y" values="232;244;232;220;232" dur="1.2s" begin="0.45s" repeatCount="indefinite"/>
+      <animate attributeName="height" values="48;24;48;72;48" dur="1.2s" begin="0.45s" repeatCount="indefinite"/>
+    </rect>
+
+    <circle cx="143" cy="143" r="18" fill="url(#accentGrad)">
+      <animateTransform attributeName="transform" type="rotate" values="0 256 256;360 256 256" dur="3s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>

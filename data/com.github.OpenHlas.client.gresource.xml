@@ -2,6 +2,7 @@
 <gresources>
     <gresource prefix="/com/github/OpenHlas/client/icons">
         <file alias="scalable/apps/com.github.OpenHlas.client.svg">icons/hicolor/scalable/apps/openHlas.svg</file>
+        <file alias="scalable/apps/openHlas-loading.svg">icons/hicolor/scalable/apps/openHlas-loading.svg</file>
         <file alias="symbolic/apps/com.github.OpenHlas.client-symbolic.svg">icons/hicolor/symbolic/apps/openHlas.svg</file>
         <file alias="scalable/actions/bars-symbolic.svg">icons/bars.svg</file>
     </gresource>

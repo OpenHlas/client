@@ -90,6 +90,10 @@ msgstr ""
 msgid "Chat"
 msgstr ""
 
+#: src/windows/content/Loading.vala:24
+msgid "Loading"
+msgstr ""
+
 #: src/windows/header/Box.vala:25
 msgid "_Preferences"
 msgstr ""

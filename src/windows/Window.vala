@@ -5,6 +5,7 @@ namespace App.Windows {
 
         Adw.ToolbarView toolbar_view { get; set; }
         protected Gtk.Box content_box { get; set; }
+        private Gtk.Stack content_stack;
         private Services.IMasterClient master_client;
         private GLib.KeyFile window_state = new GLib.KeyFile ();
         private string window_state_path;
@@ -62,6 +63,12 @@ namespace App.Windows {
             });
             toolbar_view.add_top_bar (header);
 
+            content_stack = new Gtk.Stack ();
+            content_stack.set_vexpand (true);
+            content_stack.set_hexpand (true);
+            content_stack.add_named (new Content.Loading (), "loading");
+            content_stack.set_visible_child_name ("loading");
+
             if (content == null) {
                 var saved_split_position = 240;
                 try {
@@ -78,11 +85,17 @@ namespace App.Windows {
                 var default_content = (Content.Default) current_view;
                 default_content.user_loaded.connect (header.set_user);
                 default_content.server_selected.connect (header.set_server_context);
+                default_content.user_loaded.connect (show_content);
                 content = (Gtk.Box) current_view.get_widget ();
             }
 
             set_content_view (content);
+            toolbar_view.set_content (content_stack);
             set_content (toolbar_view);
+        }
+
+        private void show_content (Models.User user) {
+            content_stack.set_visible_child_name ("content");
         }
 
         public void set_content_view (Gtk.Box content) {
@@ -93,7 +106,7 @@ namespace App.Windows {
             }
 
             this.content_box = content;
-            this.toolbar_view.set_content (content);
+            content_stack.add_named (content, "content");
         }
 
         public void append (Gtk.Widget widget) {
