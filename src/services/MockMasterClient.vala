@@ -125,13 +125,27 @@ namespace App.Services {
             return messages_by_channel.get (channel_id);
         }
 
-        public async App.Models.Message send_message_async (string channel_id, string content) throws GLib.Error {
+        public async bool set_server_nickname_async (string server_id, string nickname) throws GLib.Error {
+            yield sleep_async (80);
+            var trimmed_nickname = nickname.strip ();
+            if (current_user == null || trimmed_nickname.length == 0) {
+                throw new MasterError.INVALID_DATA ("Nickname nesmí být prázdný.");
+            }
+
+            current_user.set_server_nickname (server_id, trimmed_nickname);
+            return true;
+        }
+
+        public async App.Models.Message send_message_async (string server_id, string channel_id, string content) throws GLib.Error {
             yield sleep_async (50);
             var trimmed_content = content.strip ();
             if (trimmed_content.length == 0) {
                 throw new MasterError.INVALID_DATA ("Zpráva nesmí být prázdná.");
             }
-            add_message (channel_id, current_user != null ? current_user.display_name : "Jan Galek", trimmed_content);
+            var author_name = current_user != null
+                ? current_user.get_server_nickname (server_id)
+                : "Jan Galek";
+            add_message (channel_id, author_name, trimmed_content);
             var messages = messages_by_channel.get (channel_id);
             return messages.get (messages.size - 1);
         }

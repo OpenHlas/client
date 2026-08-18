@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Hlavní přechod pozadí -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+
+    <!-- Přechod pro komunikaci / Vala + Go akcenty -->
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe"/>
+      <stop offset="50%" stop-color="#4facfe"/>
+      <stop offset="100%" stop-color="#0052d4"/>
+    </linearGradient>
+
+    <!-- Přechod pro vnitřní kruh / otevřenost -->
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38ef7d"/>
+      <stop offset="100%" stop-color="#11998e"/>
+    </linearGradient>
+
+    <!-- Jemný stín pro hloubku -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Zakulacené čtvercové pozadí (GitHub štítek / ikona) -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)"/>
+
+  <!-- Mřížka / Světelná záře na pozadí -->
+  <circle cx="256" cy="256" r="180" fill="url(#brandGrad)" opacity="0.15" filter="blur(30px)"/>
+
+  <!-- Hlavní skupina s grafikou -->
+  <g filter="url(#dropShadow)">
+    
+    <!-- Vnější neuzavřený prstenec (Symbol Otevřenosti / Open) -->
+    <path d="M 256 96 
+             A 160 160 0 1 1 143 143" 
+          fill="none" 
+          stroke="url(#brandGrad)" 
+          stroke-width="28" 
+          stroke-linecap="round"/>
+
+    <!-- Zvukové vlny / Komunikační prvek (Hlas) -->
+    <!-- Vlna 1 (střední-levá) -->
+    <rect x="200" y="216" width="24" height="80" rx="12" fill="url(#brandGrad)"/>
+    
+    <!-- Vlna 2 (hlavní středová) -->
+    <rect x="244" y="176" width="24" height="160" rx="12" fill="url(#brandGrad)"/>
+    
+    <!-- Vlna 3 (střední-pravá) -->
+    <rect x="288" y="200" width="24" height="112" rx="12" fill="url(#brandGrad)"/>
+    
+    <!-- Vlna 4 (pravá malá) -->
+    <rect x="332" y="232" width="24" height="48" rx="12" fill="url(#brandGrad)"/>
+
+    <!-- Tečka symbolizující připojení / klient-server uzly -->
+    <circle cx="143" cy="143" r="18" fill="url(#accentGrad)"/>
+    
+  </g>
+</svg>

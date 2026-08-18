@@ -39,7 +39,11 @@ namespace App.Services {
             throw unavailable ();
         }
 
-        public async App.Models.Message send_message_async (string channel_id, string content) throws GLib.Error {
+        public async bool set_server_nickname_async (string server_id, string nickname) throws GLib.Error {
+            throw unavailable ();
+        }
+
+        public async App.Models.Message send_message_async (string server_id, string channel_id, string content) throws GLib.Error {
             throw unavailable ();
         }
     }

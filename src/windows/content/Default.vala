@@ -3,6 +3,8 @@ namespace App.Windows.Content {
     using Gtk;
 
     public class Default : Gtk.Box, View {
+        public signal void user_loaded (Models.User user);
+        public signal void server_selected (string server_id, string server_name);
         private Adw.NavigationSplitView split_view;
         private Widgets.ChannelList channels_list;
         private Widgets.ChatArea chat_area;
@@ -14,6 +16,7 @@ namespace App.Windows.Content {
         private Gtk.Paned channel_paned;
         private int channel_split_position;
         private string? selected_channel_id;
+        private string? selected_server_id;
 
         public Default (Services.IMasterClient master_client, int channel_split_position = 240) {
             Object (orientation: Orientation.VERTICAL, spacing: 0);
@@ -106,6 +109,11 @@ namespace App.Windows.Content {
             try {
                 yield master_client.login_async ("admin", "admin");
 
+                var current_user = master_client.get_current_user ();
+                if (current_user != null) {
+                    user_loaded (current_user);
+                }
+
                 var servers = yield master_client.get_my_servers_async ();
 
                 foreach (var server in servers) {
@@ -123,6 +131,7 @@ namespace App.Windows.Content {
             row.subtitle = "";
             row.subtitle_lines = 0;
             row.set_data<string> ("server-id", server.id);
+            row.set_data<string> ("server-name", server.name);
             row.set_tooltip_text (server.name);
             row.add_prefix (create_server_avatar (server));
             server_listbox.append (row);
@@ -164,6 +173,9 @@ namespace App.Windows.Content {
                 return;
             }
 
+            var server_name = row.get_data<string> ("server-name") ?? server_id;
+            selected_server_id = server_id;
+            server_selected (server_id, server_name);
             load_channels_for_server.begin (server_id);
         }
 
@@ -196,14 +208,14 @@ namespace App.Windows.Content {
         }
 
         private void on_message_submitted (string content) {
-            if (selected_channel_id != null) {
-                send_message.begin (selected_channel_id, content);
+            if (selected_server_id != null && selected_channel_id != null) {
+                send_message.begin (selected_server_id, selected_channel_id, content);
             }
         }
 
-        private async void send_message (string channel_id, string content) {
+        private async void send_message (string server_id, string channel_id, string content) {
             try {
-                yield master_client.send_message_async (channel_id, content);
+                yield master_client.send_message_async (server_id, channel_id, content);
                 yield load_messages_for_channel (channel_id);
             } catch (GLib.Error e) {
                 warning ("Failed to send message: %s", e.message);

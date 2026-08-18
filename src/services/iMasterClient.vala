@@ -9,7 +9,8 @@ namespace App.Services {
         public abstract async Gee.ArrayList<App.Models.Server> discover_servers_async () throws GLib.Error;
         public abstract async Gee.ArrayList<App.Models.Channel> get_channels_async (string server_id) throws GLib.Error;
         public abstract async Gee.ArrayList<App.Models.Message> get_messages_async (string channel_id) throws GLib.Error;
-        public abstract async App.Models.Message send_message_async (string channel_id, string content) throws GLib.Error;
+        public abstract async bool set_server_nickname_async (string server_id, string nickname) throws GLib.Error;
+        public abstract async App.Models.Message send_message_async (string server_id, string channel_id, string content) throws GLib.Error;
     }
 
     public errordomain MasterError {

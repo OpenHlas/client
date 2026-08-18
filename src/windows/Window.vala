@@ -57,6 +57,9 @@ namespace App.Windows {
             toolbar_view = new Adw.ToolbarView ();
 
             var header = new Header.Box ();
+            header.nickname_change_requested.connect ((server_id, nickname) => {
+                save_server_nickname.begin (header, server_id, nickname);
+            });
             toolbar_view.add_top_bar (header);
 
             if (content == null) {
@@ -72,6 +75,9 @@ namespace App.Windows {
                 }
 
                 current_view = new Content.Default (master_client, saved_split_position);
+                var default_content = (Content.Default) current_view;
+                default_content.user_loaded.connect (header.set_user);
+                default_content.server_selected.connect (header.set_server_context);
                 content = (Gtk.Box) current_view.get_widget ();
             }
 
@@ -92,6 +98,15 @@ namespace App.Windows {
 
         public void append (Gtk.Widget widget) {
             this.set_child (widget);
+        }
+
+        private async void save_server_nickname (Header.Box header, string server_id, string nickname) {
+            try {
+                yield master_client.set_server_nickname_async (server_id, nickname);
+                header.set_nickname_saved (nickname);
+            } catch (GLib.Error e) {
+                header.set_nickname_failed (e.message);
+            }
         }
 
         private void save_window_state () {

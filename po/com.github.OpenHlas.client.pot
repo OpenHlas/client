@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.OpenHlas.client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-18 01:33+0200\n"
+"POT-Creation-Date: 2026-08-18 02:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -97,34 +97,78 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-#: src/windows/content/Default.vala:63
+#: src/windows/content/Default.vala:66
 msgid "Channels"
 msgstr ""
 
-#: src/windows/content/Default.vala:100
+#: src/windows/content/Default.vala:103
 msgid "Servers"
 msgstr ""
 
-#: src/windows/content/Default.vala:101
+#: src/windows/content/Default.vala:104
 msgid "Chat"
 msgstr ""
 
-#: src/windows/header/Box.vala:12
+#: src/windows/header/Box.vala:25
 msgid "_Preferences"
 msgstr ""
 
-#: src/windows/header/Box.vala:13
+#: src/windows/header/Box.vala:26
 msgid "_Keyboard Shortcuts"
 msgstr ""
 
-#: src/windows/header/Box.vala:14
+#: src/windows/header/Box.vala:27
 msgid "_Donate"
 msgstr ""
 
-#: src/windows/header/Box.vala:15
+#: src/windows/header/Box.vala:28
 msgid "_About"
 msgstr ""
 
-#: src/windows/header/Box.vala:18
+#: src/windows/header/Box.vala:31
 msgid "Main Menu"
+msgstr ""
+
+#: src/windows/header/Box.vala:41
+msgid "Jan Galek"
+msgstr ""
+
+#: src/windows/header/Box.vala:46
+msgid "@jan_galek"
+msgstr ""
+
+#: src/windows/header/Box.vala:52
+msgid "Nickname on this server"
+msgstr ""
+
+#: src/windows/header/Box.vala:61 src/windows/header/Box.vala:149
+msgid "Edit nickname"
+msgstr ""
+
+#: src/windows/header/Box.vala:67
+msgid "Use your profile name"
+msgstr ""
+
+#: src/windows/header/Box.vala:78
+msgid "Notifications"
+msgstr ""
+
+#: src/windows/header/Box.vala:93
+msgid "Your profile and settings"
+msgstr ""
+
+#: src/windows/header/Box.vala:142
+msgid "Nickname cannot be empty"
+msgstr ""
+
+#: src/windows/header/Box.vala:150
+msgid "Saving nickname..."
+msgstr ""
+
+#: src/windows/header/Box.vala:159 src/windows/header/Box.vala:179
+msgid "Save nickname"
+msgstr ""
+
+#: src/windows/header/Box.vala:168
+msgid "Nickname saved"
 msgstr ""
