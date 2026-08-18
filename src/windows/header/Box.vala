@@ -23,6 +23,10 @@ namespace App.Windows.Header {
         public Box () {
             var menu = new Menu ();
             menu.append (_("_Preferences"), "app.preferences");
+            var language_menu = new Menu ();
+            language_menu.append (_("Czech"), "app.set-language::cs");
+            language_menu.append (_("English"), "app.set-language::en");
+            menu.append_submenu (_("Language"), language_menu);
             menu.append (_("_Keyboard Shortcuts"), "win.show-help-overlay");
             menu.append (_("_Donate"), "app.donate");
             menu.append (_("_About"), "app.about");

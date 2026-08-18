@@ -98,62 +98,74 @@ msgstr ""
 msgid "_Preferences"
 msgstr ""
 
-#: src/windows/header/Box.vala:26
-msgid "_Keyboard Shortcuts"
-msgstr ""
-
 #: src/windows/header/Box.vala:27
-msgid "_Donate"
+msgid "Czech"
 msgstr ""
 
 #: src/windows/header/Box.vala:28
-msgid "_About"
+msgid "English"
+msgstr ""
+
+#: src/windows/header/Box.vala:29
+msgid "Language"
+msgstr ""
+
+#: src/windows/header/Box.vala:30
+msgid "_Keyboard Shortcuts"
 msgstr ""
 
 #: src/windows/header/Box.vala:31
+msgid "_Donate"
+msgstr ""
+
+#: src/windows/header/Box.vala:32
+msgid "_About"
+msgstr ""
+
+#: src/windows/header/Box.vala:35
 msgid "Main Menu"
 msgstr ""
 
-#: src/windows/header/Box.vala:41
+#: src/windows/header/Box.vala:45
 msgid "Jan Galek"
 msgstr ""
 
-#: src/windows/header/Box.vala:46
+#: src/windows/header/Box.vala:50
 msgid "@jan_galek"
 msgstr ""
 
-#: src/windows/header/Box.vala:52
+#: src/windows/header/Box.vala:56
 msgid "Nickname on this server"
 msgstr ""
 
-#: src/windows/header/Box.vala:61 src/windows/header/Box.vala:149
+#: src/windows/header/Box.vala:65 src/windows/header/Box.vala:153
 msgid "Edit nickname"
 msgstr ""
 
-#: src/windows/header/Box.vala:67
+#: src/windows/header/Box.vala:71
 msgid "Use your profile name"
 msgstr ""
 
-#: src/windows/header/Box.vala:78
+#: src/windows/header/Box.vala:82
 msgid "Notifications"
 msgstr ""
 
-#: src/windows/header/Box.vala:93
+#: src/windows/header/Box.vala:97
 msgid "Your profile and settings"
 msgstr ""
 
-#: src/windows/header/Box.vala:142
+#: src/windows/header/Box.vala:146
 msgid "Nickname cannot be empty"
 msgstr ""
 
-#: src/windows/header/Box.vala:150
+#: src/windows/header/Box.vala:154
 msgid "Saving nickname..."
 msgstr ""
 
-#: src/windows/header/Box.vala:159 src/windows/header/Box.vala:179
+#: src/windows/header/Box.vala:163 src/windows/header/Box.vala:183
 msgid "Save nickname"
 msgstr ""
 
-#: src/windows/header/Box.vala:168
+#: src/windows/header/Box.vala:172
 msgid "Nickname saved"
 msgstr ""

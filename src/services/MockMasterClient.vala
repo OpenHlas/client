@@ -65,7 +65,7 @@ namespace App.Services {
                 return true;
             }
 
-            throw new MasterError.AUTH_FAILED ("Neplatné uživatelské jméno nebo heslo.");
+            throw new MasterError.AUTH_FAILED ("Invalid username or password.");
         }
 
         public async bool register_async (string username, string email, string password) throws GLib.Error {
@@ -112,7 +112,7 @@ namespace App.Services {
             yield sleep_async (100);
             var channels = channels_by_server.get (server_id);
             if (channels == null) {
-                throw new MasterError.INVALID_DATA ("Server neexistuje.");
+                throw new MasterError.INVALID_DATA ("Server does not exist.");
             }
             return channels;
         }
@@ -129,7 +129,7 @@ namespace App.Services {
             yield sleep_async (80);
             var trimmed_nickname = nickname.strip ();
             if (current_user == null || trimmed_nickname.length == 0) {
-                throw new MasterError.INVALID_DATA ("Nickname nesmí být prázdný.");
+                throw new MasterError.INVALID_DATA ("Nickname cannot be empty.");
             }
 
             current_user.set_server_nickname (server_id, trimmed_nickname);
@@ -140,7 +140,7 @@ namespace App.Services {
             yield sleep_async (50);
             var trimmed_content = content.strip ();
             if (trimmed_content.length == 0) {
-                throw new MasterError.INVALID_DATA ("Zpráva nesmí být prázdná.");
+                throw new MasterError.INVALID_DATA ("Message cannot be empty.");
             }
             var author_name = current_user != null
                 ? current_user.get_server_nickname (server_id)

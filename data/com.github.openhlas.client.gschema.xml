@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="com.github.openhlas.client" path="/com/github/openhlas/client/">
+    <key name="language" type="s">
+      <default>'en'</default>
+      <summary>Application language</summary>
+      <description>Language used by the application after restart.</description>
+    </key>
+  </schema>
+</schemalist>

@@ -1,5 +1,7 @@
 reponame = meson.project_name().split('.')[3]
 
+gnome.compile_schemas()
+
 resources = gnome.compile_resources(
     'resources',
     meson.project_name() + '.gresource.xml'
