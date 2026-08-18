@@ -11,7 +11,7 @@ gen-potfiles:
 	@find data -name "*.in" -not -path "*/build/*" >> po/POTFILES
 	@find src -name "*.vala" -not -path "*/build/*" >> po/POTFILES
 
-translations: 
+translations: gen-potfiles
 	@NAME=$$(grep -oP "project\('\K[^']+" meson.build); \
 	cd build && ninja $$NAME-pot && ninja $$NAME-update-po
 

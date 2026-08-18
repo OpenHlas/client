@@ -54,18 +54,6 @@ msgstr ""
 msgid "Activities"
 msgstr ""
 
-#: src/widgets/chatArea.vala:19
-msgid "# general"
-msgstr ""
-
-#: src/widgets/chatArea.vala:28
-msgid "Jan Galek - Welcome to OpenHlas!"
-msgstr ""
-
-#: src/widgets/chatArea.vala:29
-msgid "Jan Galek - Select a channel to start chatting."
-msgstr ""
-
 #: src/widgets/emojiPicker.vala:17
 msgid "Insert emoji"
 msgstr ""

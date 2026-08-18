@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-18 02:53+0200\n"
+"POT-Creation-Date: 2026-08-18 02:59+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -61,18 +61,6 @@ msgstr "Jídlo"
 #: src/utils/Emoji.vala:258
 msgid "Activities"
 msgstr "Aktivita"
-
-#: src/widgets/chatArea.vala:19
-msgid "# general"
-msgstr ""
-
-#: src/widgets/chatArea.vala:28
-msgid "Jan Galek - Welcome to OpenHlas!"
-msgstr ""
-
-#: src/widgets/chatArea.vala:29
-msgid "Jan Galek - Select a channel to start chatting."
-msgstr ""
 
 #: src/widgets/emojiPicker.vala:17
 msgid "Insert emoji"

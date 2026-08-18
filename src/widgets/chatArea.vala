@@ -16,7 +16,7 @@ namespace App.Widgets {
             set_hexpand (true);
             set_size_request (440, -1);
 
-            channel_title = new Gtk.Label (_("# general"));
+            channel_title = new Gtk.Label ("# general");
             channel_title.set_xalign (0);
             channel_title.add_css_class ("title-3");
             channel_title.set_margin_start (18);
@@ -25,8 +25,8 @@ namespace App.Widgets {
             append (channel_title);
 
             messages = new Gtk.StringList (null);
-            messages.append (_("Jan Galek - Welcome to OpenHlas!"));
-            messages.append (_("Jan Galek - Select a channel to start chatting."));
+            messages.append ("Jan Galek - Welcome to OpenHlas!");
+            messages.append ("Jan Galek - Select a channel to start chatting.");
 
             var factory = new Gtk.SignalListItemFactory ();
             factory.setup.connect ((object) => {
