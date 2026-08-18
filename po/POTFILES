@@ -3,6 +3,7 @@ data/com.github.OpenHlas.client.desktop.in
 data/com.github.OpenHlas.client.metainfo.xml.in
 src/app/Application.vala
 src/dialogs/About.vala
+src/dialogs/Preferences.vala
 src/main.vala
 src/utils/Emoji.vala
 src/widgets/chatArea.vala

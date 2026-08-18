@@ -4,7 +4,6 @@ namespace App.Windows.Content {
 
     public class Default : Gtk.Box, View {
         public signal void user_loaded (Models.User user);
-        public signal void server_selected (string server_id, string server_name);
         private Adw.NavigationSplitView split_view;
         private Widgets.ChannelList channels_list;
         private Widgets.ChatArea chat_area;
@@ -17,6 +16,8 @@ namespace App.Windows.Content {
         private int channel_split_position;
         private string? selected_channel_id;
         private string? selected_server_id;
+        private Models.User? current_user;
+        private Gee.ArrayList<Models.Server>? servers;
 
         public Default (Services.IMasterClient master_client, int channel_split_position = 240) {
             Object (orientation: Orientation.VERTICAL, spacing: 0);
@@ -32,6 +33,21 @@ namespace App.Windows.Content {
 
         public Gtk.Widget get_widget () {
             return this;
+        }
+
+        public void show_preferences (Gtk.Window parent) {
+            if (current_user == null || servers == null) {
+                return;
+            }
+
+            var application = (App.Application) GLib.Application.get_default ();
+            var preferences = new Dialogs.Preferences (current_user, servers, application.get_language (), application.get_theme ());
+            preferences.language_changed.connect (application.set_language);
+            preferences.theme_changed.connect (application.set_theme);
+            preferences.nickname_change_requested.connect ((server_id, nickname) => {
+                save_preference_nickname (preferences, server_id, nickname);
+            });
+            preferences.present (parent);
         }
 
         private void build_ui () {
@@ -109,12 +125,12 @@ namespace App.Windows.Content {
             try {
                 yield master_client.login_async ("admin", "admin");
 
-                var current_user = master_client.get_current_user ();
+                current_user = master_client.get_current_user ();
                 if (current_user != null) {
                     user_loaded (current_user);
                 }
 
-                var servers = yield master_client.get_my_servers_async ();
+                servers = yield master_client.get_my_servers_async ();
 
                 foreach (var server in servers) {
                     add_server_row (server);
@@ -173,9 +189,7 @@ namespace App.Windows.Content {
                 return;
             }
 
-            var server_name = row.get_data<string> ("server-name") ?? server_id;
             selected_server_id = server_id;
-            server_selected (server_id, server_name);
             load_channels_for_server.begin (server_id);
         }
 
@@ -219,6 +233,15 @@ namespace App.Windows.Content {
                 yield load_messages_for_channel (channel_id);
             } catch (GLib.Error e) {
                 warning ("Failed to send message: %s", e.message);
+            }
+        }
+
+        private async void save_preference_nickname (Dialogs.Preferences preferences, string server_id, string nickname) {
+            try {
+                yield master_client.set_server_nickname_async (server_id, nickname);
+                preferences.set_nickname_saved (server_id, nickname);
+            } catch (GLib.Error e) {
+                preferences.set_nickname_failed (server_id, e.message);
             }
         }
     }

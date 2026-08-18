@@ -6,5 +6,25 @@
       <summary>Application language</summary>
       <description>Language used by the application after restart.</description>
     </key>
+    <key name="theme" type="s">
+      <default>'system'</default>
+      <summary>Application theme</summary>
+      <description>Color theme used by the application.</description>
+    </key>
+    <key name="window-width" type="i">
+      <default>1200</default>
+      <summary>Window width</summary>
+      <description>Width of the main application window.</description>
+    </key>
+    <key name="window-height" type="i">
+      <default>760</default>
+      <summary>Window height</summary>
+      <description>Height of the main application window.</description>
+    </key>
+    <key name="channel-split-position" type="i">
+      <default>240</default>
+      <summary>Channel sidebar position</summary>
+      <description>Horizontal position of the channel sidebar.</description>
+    </key>
   </schema>
 </schemalist>
