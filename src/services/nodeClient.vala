@@ -1,5 +1,6 @@
 namespace App.Services {
     public class NodeClient : GLib.Object {
+        public bool connected { get; private set; }
         private Soup.Session session;
         private Soup.WebsocketConnection? ws_conn = null;
 
@@ -30,11 +31,21 @@ namespace App.Services {
                     }
                 });
 
+                connected = true;
                 return true;
             } catch (Error e) {
+                connected = false;
                 warning ("Failed to connect to OpenHlas Node: %s", e.message);
                 return false;
             }
+        }
+
+        public new void disconnect () {
+            if (ws_conn != null) {
+                ws_conn.close (Soup.WebsocketCloseCode.NORMAL, "Switching server");
+                ws_conn = null;
+            }
+            connected = false;
         }
 
         public void send_message (string json_payload) {

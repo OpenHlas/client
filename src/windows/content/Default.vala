@@ -9,6 +9,7 @@ namespace App.Windows.Content {
         private Widgets.ChatArea chat_area;
         private unowned Gtk.ListView messages_list;
         private Services.IMasterClient master_client;
+        private Services.NodeClient node_client;
         private Gtk.ListBox server_listbox;
         private Gtk.Box server_column;
         private Gtk.Box channel_column;
@@ -22,6 +23,7 @@ namespace App.Windows.Content {
         public Default (Services.IMasterClient master_client, int channel_split_position = 240) {
             Object (orientation: Orientation.VERTICAL, spacing: 0);
             this.master_client = master_client;
+            node_client = new Services.NodeClient ();
             this.channel_split_position = channel_split_position;
             build_ui ();
             load_initial_data.begin ();
@@ -148,6 +150,7 @@ namespace App.Windows.Content {
             row.subtitle_lines = 0;
             row.set_data<string> ("server-id", server.id);
             row.set_data<string> ("server-name", server.name);
+            row.set_data<string> ("server-ws-url", server.ws_url);
             row.set_tooltip_text (server.name);
             row.add_prefix (create_server_avatar (server));
             server_listbox.append (row);
@@ -190,7 +193,19 @@ namespace App.Windows.Content {
             }
 
             selected_server_id = server_id;
+            var ws_url = row.get_data<string> ("server-ws-url");
+            if (ws_url != null) {
+                connect_to_node.begin (ws_url);
+            }
             load_channels_for_server.begin (server_id);
+        }
+
+        private async void connect_to_node (string ws_url) {
+            node_client.disconnect ();
+            var token = master_client.get_current_token ();
+            if (token != null) {
+                yield node_client.connect_to_node (ws_url, token);
+            }
         }
 
         private void on_channel_selected (string channel_id) {

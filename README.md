@@ -79,3 +79,11 @@ Contributing
 Feel free to open issues or submit pull requests to improve the template.
 
 Enjoy building with Vala!
+
+## Contributors
+
+<div>
+  <a href="https://github.com/OpenHlas/client/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=OpenHlas/client" />
+  </a>
+</div>
