@@ -4,7 +4,9 @@ gnome.compile_schemas()
 
 resources = gnome.compile_resources(
     'resources',
-    meson.project_name() + '.gresource.xml'
+    meson.project_name() + '.gresource.xml',
+    source_dir: [meson.current_source_dir(), meson.project_build_root()],
+    dependencies: [blueprint_ui, header_ui, chat_area_ui, message_entry_ui]
 )
 
 install_subdir(

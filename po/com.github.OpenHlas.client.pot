@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.OpenHlas.client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-18 03:25+0200\n"
+"POT-Creation-Date: 2026-09-03 20:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,7 +77,7 @@ msgstr ""
 msgid "Theme"
 msgstr ""
 
-#: src/dialogs/Preferences.vala:69 src/windows/content/Default.vala:119
+#: src/dialogs/Preferences.vala:69 src/windows/content/Default.vala:143
 msgid "Servers"
 msgstr ""
 
@@ -145,11 +145,11 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-#: src/windows/content/Default.vala:82
+#: src/windows/content/Default.vala:106
 msgid "Channels"
 msgstr ""
 
-#: src/windows/content/Default.vala:120
+#: src/windows/content/Default.vala:144
 msgid "Chat"
 msgstr ""
 
@@ -187,4 +187,24 @@ msgstr ""
 
 #: src/windows/header/Box.vala:43
 msgid "Your profile"
+msgstr ""
+
+#: src/viewmodels/MainViewModel.vala:35
+msgid "load initial data"
+msgstr ""
+
+#: src/viewmodels/MainViewModel.vala:52
+msgid "load channels"
+msgstr ""
+
+#: src/viewmodels/MainViewModel.vala:62
+msgid "load messages"
+msgstr ""
+
+#: src/viewmodels/MainViewModel.vala:75
+msgid "send message"
+msgstr ""
+
+#: src/viewmodels/MainViewModel.vala:85
+msgid "save nickname"
 msgstr ""

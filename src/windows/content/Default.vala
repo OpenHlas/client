@@ -8,25 +8,20 @@ namespace App.Windows.Content {
         private Widgets.ChannelList channels_list;
         private Widgets.ChatArea chat_area;
         private unowned Gtk.ListView messages_list;
-        private Services.IMasterClient master_client;
-        private Services.NodeClient node_client;
+        private ViewModels.MainViewModel main_view_model;
         private Gtk.ListBox server_listbox;
         private Gtk.Box server_column;
         private Gtk.Box channel_column;
         private Gtk.Paned channel_paned;
         private int channel_split_position;
-        private string? selected_channel_id;
-        private string? selected_server_id;
-        private Models.User? current_user;
-        private Gee.ArrayList<Models.Server>? servers;
 
-        public Default (Services.IMasterClient master_client, int channel_split_position = 240) {
+        public Default (ViewModels.MainViewModel main_view_model, int channel_split_position = 240) {
             Object (orientation: Orientation.VERTICAL, spacing: 0);
-            this.master_client = master_client;
-            node_client = new Services.NodeClient ();
+            this.main_view_model = main_view_model;
             this.channel_split_position = channel_split_position;
             build_ui ();
-            load_initial_data.begin ();
+            bind_view_model ();
+            main_view_model.initialize.begin ();
         }
 
         public int get_split_position () {
@@ -38,18 +33,45 @@ namespace App.Windows.Content {
         }
 
         public void show_preferences (Gtk.Window parent) {
-            if (current_user == null || servers == null) {
+            if (main_view_model.current_user == null || main_view_model.servers == null) {
                 return;
             }
 
             var application = (App.Application) GLib.Application.get_default ();
-            var preferences = new Dialogs.Preferences (current_user, servers, application.get_language (), application.get_theme ());
+            var preferences = new Dialogs.Preferences (
+                main_view_model.current_user,
+                main_view_model.servers,
+                application.get_language (),
+                application.get_theme ()
+            );
             preferences.language_changed.connect (application.set_language);
             preferences.theme_changed.connect (application.set_theme);
             preferences.nickname_change_requested.connect ((server_id, nickname) => {
-                save_preference_nickname (preferences, server_id, nickname);
+                main_view_model.save_server_nickname.begin (server_id, nickname);
             });
+            main_view_model.server_nickname_saved.connect (preferences.set_nickname_saved);
+            main_view_model.server_nickname_failed.connect (preferences.set_nickname_failed);
             preferences.present (parent);
+        }
+
+        private void bind_view_model () {
+            main_view_model.user_loaded.connect ((user) => user_loaded (user));
+            main_view_model.servers_loaded.connect ((servers) => {
+                foreach (var server in servers) {
+                    add_server_row (server);
+                }
+            });
+            main_view_model.channels_loaded.connect ((channels) => {
+                channels_list.clear_channels ();
+                foreach (var channel in channels) {
+                    channels_list.add_channel (channel);
+                }
+                channels_list.select_first ();
+            });
+            main_view_model.messages_loaded.connect (chat_area.set_messages);
+            main_view_model.operation_failed.connect ((operation, error_message) => {
+                warning ("Failed to %s: %s", operation, error_message);
+            });
         }
 
         private void build_ui () {
@@ -123,25 +145,6 @@ namespace App.Windows.Content {
             append (split_view);
         }
 
-        private async void load_initial_data () {
-            try {
-                yield master_client.login_async ("admin", "admin");
-
-                current_user = master_client.get_current_user ();
-                if (current_user != null) {
-                    user_loaded (current_user);
-                }
-
-                servers = yield master_client.get_my_servers_async ();
-
-                foreach (var server in servers) {
-                    add_server_row (server);
-                }
-            } catch (GLib.Error e) {
-                warning ("Failed to load data from the master server: %s", e.message);
-            }
-        }
-
         private void add_server_row (Models.Server server) {
             var row = new Adw.ActionRow ();
             row.use_markup = false;
@@ -192,72 +195,19 @@ namespace App.Windows.Content {
                 return;
             }
 
-            selected_server_id = server_id;
             var ws_url = row.get_data<string> ("server-ws-url");
             if (ws_url != null) {
-                connect_to_node.begin (ws_url);
-            }
-            load_channels_for_server.begin (server_id);
-        }
-
-        private async void connect_to_node (string ws_url) {
-            node_client.disconnect ();
-            var token = master_client.get_current_token ();
-            if (token != null) {
-                yield node_client.connect_to_node (ws_url, token);
+                main_view_model.select_server.begin (server_id, ws_url);
             }
         }
 
         private void on_channel_selected (string channel_id) {
-            selected_channel_id = channel_id;
             chat_area.set_channel (channel_id);
-            load_messages_for_channel.begin (channel_id);
-        }
-
-        private async void load_channels_for_server (string server_id) {
-            try {
-                var channels = yield master_client.get_channels_async (server_id);
-                channels_list.clear_channels ();
-                foreach (var channel in channels) {
-                    channels_list.add_channel (channel);
-                }
-                channels_list.select_first ();
-            } catch (GLib.Error e) {
-                warning ("Failed to load channels: %s", e.message);
-            }
-        }
-
-        private async void load_messages_for_channel (string channel_id) {
-            try {
-                var messages = yield master_client.get_messages_async (channel_id);
-                chat_area.set_messages (messages);
-            } catch (GLib.Error e) {
-                warning ("Failed to load messages: %s", e.message);
-            }
+            main_view_model.select_channel.begin (channel_id);
         }
 
         private void on_message_submitted (string content) {
-            if (selected_server_id != null && selected_channel_id != null) {
-                send_message.begin (selected_server_id, selected_channel_id, content);
-            }
-        }
-
-        private async void send_message (string server_id, string channel_id, string content) {
-            try {
-                yield master_client.send_message_async (server_id, channel_id, content);
-                yield load_messages_for_channel (channel_id);
-            } catch (GLib.Error e) {
-                warning ("Failed to send message: %s", e.message);
-            }
-        }
-
-        private async void save_preference_nickname (Dialogs.Preferences preferences, string server_id, string nickname) {
-            try {
-                yield master_client.set_server_nickname_async (server_id, nickname);
-                preferences.set_nickname_saved (server_id, nickname);
-            } catch (GLib.Error e) {
-                preferences.set_nickname_failed (server_id, e.message);
-            }
+            main_view_model.submit_message.begin (content);
         }
     }
 }

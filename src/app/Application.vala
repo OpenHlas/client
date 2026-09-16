@@ -51,6 +51,22 @@ namespace App {
             }
         }
 
+        public ViewModels.MainViewModel create_main_view_model () {
+            var environment = Environment.get_variable ("OPENHLAS_ENV");
+            if (environment == "dev" || environment == "development") {
+                message ("OpenHlas development environment: using mock clients.");
+                return new ViewModels.MainViewModel (
+                    new Services.MockMasterClient (),
+                    new Services.MockNodeClient ()
+                );
+            }
+
+            return new ViewModels.MainViewModel (
+                new Services.MasterClient (),
+                new Services.NodeClient ()
+            );
+        }
+
         private void apply_language (string language_code) {
             Environment.set_variable ("LANGUAGE", language_code, true);
         }
@@ -79,7 +95,7 @@ namespace App {
 
         private void refresh_main_window () {
             var old_window = active_window;
-            var main_window = new Windows.Window ();
+            var main_window = new Windows.Window (create_main_view_model ());
             main_window.present ();
 
             if (old_window != null && old_window != main_window) {
@@ -116,7 +132,7 @@ namespace App {
 
             apply_theme (theme);
 
-            var main_window = new Windows.Window ();
+            var main_window = new Windows.Window (create_main_view_model ());
             main_window.present ();
         }
     }

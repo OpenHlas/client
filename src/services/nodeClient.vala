@@ -1,5 +1,5 @@
 namespace App.Services {
-    public class NodeClient : GLib.Object {
+    public class NodeClient : GLib.Object, INodeClient {
         public bool connected { get; private set; }
         private Soup.Session session;
         private Soup.WebsocketConnection? ws_conn = null;

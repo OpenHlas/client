@@ -1,0 +1,27 @@
+using Gtk 4.0;
+
+template $AppWidgetsChatArea : Gtk.Box {
+  orientation: vertical;
+  spacing: 0;
+  vexpand: true;
+  hexpand: true;
+  width-request: 440;
+
+  Gtk.Label channel_title {
+    label: "# general";
+    xalign: 0;
+    styles ["title-3"]
+    margin-start: 18;
+    margin-top: 14;
+    margin-bottom: 10;
+  }
+
+  Gtk.Overlay messages_overlay {
+    vexpand: true;
+    hexpand: true;
+
+    child: Gtk.ListView messages_view {
+      vexpand: true;
+    };
+  }
+}

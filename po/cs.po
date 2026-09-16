@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-18 03:25+0200\n"
+"POT-Creation-Date: 2026-09-03 20:46+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -66,7 +66,7 @@ msgstr "Jazyk"
 msgid "Theme"
 msgstr ""
 
-#: src/dialogs/Preferences.vala:69 src/windows/content/Default.vala:119
+#: src/dialogs/Preferences.vala:69 src/windows/content/Default.vala:143
 msgid "Servers"
 msgstr "Servery"
 
@@ -136,11 +136,11 @@ msgstr "Napsat zprávu"
 msgid "Send"
 msgstr "Odeslat"
 
-#: src/windows/content/Default.vala:82
+#: src/windows/content/Default.vala:106
 msgid "Channels"
 msgstr "Kanály"
 
-#: src/windows/content/Default.vala:120
+#: src/windows/content/Default.vala:144
 msgid "Chat"
 msgstr ""
 
@@ -180,6 +180,30 @@ msgstr ""
 #, fuzzy
 msgid "Your profile"
 msgstr "Použít tvoje profilové jméno"
+
+#: src/viewmodels/MainViewModel.vala:35
+msgid "load initial data"
+msgstr ""
+
+#: src/viewmodels/MainViewModel.vala:52
+#, fuzzy
+msgid "load channels"
+msgstr "Kanály"
+
+#: src/viewmodels/MainViewModel.vala:62
+#, fuzzy
+msgid "load messages"
+msgstr "Napsat zprávu"
+
+#: src/viewmodels/MainViewModel.vala:75
+#, fuzzy
+msgid "send message"
+msgstr "Napsat zprávu"
+
+#: src/viewmodels/MainViewModel.vala:85
+#, fuzzy
+msgid "save nickname"
+msgstr "Uložit přezdívku"
 
 #~ msgid "Edit nickname"
 #~ msgstr "Upravit přezdívku"

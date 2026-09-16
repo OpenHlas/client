@@ -1,29 +1,20 @@
 namespace App.Widgets {
     using Gtk;
 
+    [GtkTemplate (ui = "/com/github/OpenHlas/client/ui/chat-area.ui")]
     public class ChatArea : Gtk.Box {
 
-        public Gtk.ListView messages_view { get; private set; }
+        [GtkChild]
+        public unowned Gtk.ListView messages_view;
         public signal void message_submitted (string content);
 
         private Gtk.StringList messages;
-        private Gtk.Label channel_title;
-        private Gtk.Overlay messages_overlay;
+        [GtkChild]
+        private unowned Gtk.Label channel_title;
+        [GtkChild]
+        private unowned Gtk.Overlay messages_overlay;
 
         public ChatArea () {
-            Object (orientation: Orientation.VERTICAL, spacing: 0);
-            set_vexpand (true);
-            set_hexpand (true);
-            set_size_request (440, -1);
-
-            channel_title = new Gtk.Label ("# general");
-            channel_title.set_xalign (0);
-            channel_title.add_css_class ("title-3");
-            channel_title.set_margin_start (18);
-            channel_title.set_margin_top (14);
-            channel_title.set_margin_bottom (10);
-            append (channel_title);
-
             messages = new Gtk.StringList (null);
             messages.append ("Jan Galek - Welcome to OpenHlas!");
             messages.append ("Jan Galek - Select a channel to start chatting.");
@@ -48,14 +39,8 @@ namespace App.Widgets {
             });
 
             var selection_model = new Gtk.SingleSelection (messages);
-            messages_view = new Gtk.ListView (selection_model, factory);
-            messages_view.set_vexpand (true);
-
-            messages_overlay = new Gtk.Overlay ();
-            messages_overlay.set_vexpand (true);
-            messages_overlay.set_hexpand (true);
-            messages_overlay.set_child (messages_view);
-            append (messages_overlay);
+            messages_view.model = selection_model;
+            messages_view.factory = factory;
 
             var message_entry = new MessageEntry ();
             message_entry.message_submitted.connect ((content) => {

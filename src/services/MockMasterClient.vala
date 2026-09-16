@@ -81,17 +81,17 @@ namespace App.Services {
             var servers = new Gee.ArrayList<App.Models.Server> ();
 
             // Mockovaný profilový server (osobní)
-            var personal = new App.Models.Server ("srv_1", "Můj Profil & Zápisky", "ws://localhost:8081/ws");
+            var personal = new App.Models.Server ("srv_1", "Můj Profil & Zápisky", "ws://localhost:9081/ws");
             personal.icon_name = "user-info-symbolic";
             servers.add (personal);
 
             // Mockovaný herní server
-            var gaming = new App.Models.Server ("srv_2", "Herní Komunita", "ws://localhost:8082/ws");
+            var gaming = new App.Models.Server ("srv_2", "Herní Komunita", "ws://localhost:9082/ws");
             gaming.icon_name = "input-gaming-symbolic";
             servers.add (gaming);
 
             // Mockovaný vývojářský server
-            var dev = new App.Models.Server ("srv_3", "Vala & Go Devs", "ws://localhost:8083/ws");
+            var dev = new App.Models.Server ("srv_3", "Vala & Go Devs", "ws://localhost:9083/ws");
             dev.icon_name = "code-context-symbolic";
             servers.add (dev);
 

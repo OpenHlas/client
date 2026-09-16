@@ -58,7 +58,7 @@ msgstr ""
 msgid "Theme"
 msgstr ""
 
-#: src/dialogs/Preferences.vala:69 src/windows/content/Default.vala:119
+#: src/dialogs/Preferences.vala:69 src/windows/content/Default.vala:143
 msgid "Servers"
 msgstr ""
 
@@ -126,11 +126,11 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-#: src/windows/content/Default.vala:82
+#: src/windows/content/Default.vala:106
 msgid "Channels"
 msgstr ""
 
-#: src/windows/content/Default.vala:120
+#: src/windows/content/Default.vala:144
 msgid "Chat"
 msgstr ""
 
@@ -168,4 +168,24 @@ msgstr ""
 
 #: src/windows/header/Box.vala:43
 msgid "Your profile"
+msgstr ""
+
+#: src/viewmodels/MainViewModel.vala:35
+msgid "load initial data"
+msgstr ""
+
+#: src/viewmodels/MainViewModel.vala:52
+msgid "load channels"
+msgstr ""
+
+#: src/viewmodels/MainViewModel.vala:62
+msgid "load messages"
+msgstr ""
+
+#: src/viewmodels/MainViewModel.vala:75
+msgid "send message"
+msgstr ""
+
+#: src/viewmodels/MainViewModel.vala:85
+msgid "save nickname"
 msgstr ""

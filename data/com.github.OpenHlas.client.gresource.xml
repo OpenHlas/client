@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
+    <gresource prefix="/com/github/OpenHlas/client">
+        <file>ui/window.ui</file>
+        <file>ui/header.ui</file>
+        <file>ui/chat-area.ui</file>
+        <file>ui/message-entry.ui</file>
+    </gresource>
     <gresource prefix="/com/github/OpenHlas/client/icons">
         <file alias="scalable/apps/com.github.OpenHlas.client.svg">icons/hicolor/scalable/apps/openHlas.svg</file>
         <file alias="scalable/apps/openHlas-loading.svg">icons/hicolor/scalable/apps/openHlas-loading.svg</file>

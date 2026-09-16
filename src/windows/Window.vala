@@ -1,33 +1,27 @@
 namespace App.Windows {
     using Adw;
     using Gtk;
+
+    [GtkTemplate (ui = "/com/github/OpenHlas/client/ui/window.ui")]
     public class Window : Adw.ApplicationWindow {
 
-        Adw.ToolbarView toolbar_view { get; set; }
+        [GtkChild]
+        private unowned Adw.ToolbarView toolbar_view;
+        [GtkChild]
+        private unowned Gtk.Stack content_stack;
+        private Header.Box header;
         protected Gtk.Box content_box { get; set; }
-        private Gtk.Stack content_stack;
-        private Services.IMasterClient master_client;
+        private ViewModels.MainViewModel main_view_model;
         private GLib.Settings settings;
         private Content.View? current_view;
         private bool close_without_quitting;
 
-        public Window () {
+        public Window (ViewModels.MainViewModel main_view_model) {
             Object (application: (Adw.Application) GLib.Application.get_default (), title: Config.APP_NAME);
+            this.main_view_model = main_view_model;
             settings = new GLib.Settings ("com.github.openhlas.client");
-            set_default_size (1200, 760);
             load_window_state ();
-            master_client = create_master_client ();
-            build_ui ();
-        }
-
-        private Services.IMasterClient create_master_client () {
-            var environment = Environment.get_variable ("OPENHLAS_ENV");
-            if (environment == "dev" || environment == "development") {
-                message ("OpenHlas development environment: using mock master client.");
-                return new Services.MockMasterClient ();
-            }
-
-            return new Services.MasterClient ();
+            build_content ();
         }
 
         public override bool close_request () {
@@ -52,34 +46,23 @@ namespace App.Windows {
             }
         }
 
-        private void build_ui (owned Gtk.Box? content = null) {
-            toolbar_view = new Adw.ToolbarView ();
-
-            var header = new Header.Box ();
+        private void build_content () {
+            header = new Header.Box ();
             toolbar_view.add_top_bar (header);
 
-            content_stack = new Gtk.Stack ();
-            content_stack.set_vexpand (true);
-            content_stack.set_hexpand (true);
             content_stack.add_named (new Content.Loading (), "loading");
             content_stack.set_visible_child_name ("loading");
 
-            if (content == null) {
-                var saved_split_position = settings.get_int ("channel-split-position");
-                if (saved_split_position < 240) {
-                    saved_split_position = 240;
-                }
-
-                current_view = new Content.Default (master_client, saved_split_position);
-                var default_content = (Content.Default) current_view;
-                default_content.user_loaded.connect (header.set_user);
-                default_content.user_loaded.connect (show_content);
-                content = (Gtk.Box) current_view.get_widget ();
+            var saved_split_position = settings.get_int ("channel-split-position");
+            if (saved_split_position < 240) {
+                saved_split_position = 240;
             }
 
-            set_content_view (content);
-            toolbar_view.set_content (content_stack);
-            set_content (toolbar_view);
+            current_view = new Content.Default (main_view_model, saved_split_position);
+            var default_content = (Content.Default) current_view;
+            default_content.user_loaded.connect (header.set_user);
+            default_content.user_loaded.connect (show_content);
+            set_content_view ((Gtk.Box) current_view.get_widget ());
         }
 
         private void show_content (Models.User user) {

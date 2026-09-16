@@ -23,7 +23,10 @@ src/services/nodeClient.vala
 src/services/audioEngine.vala
 src/services/iMasterClient.vala
 src/services/MockMasterClient.vala
+src/services/iNodeClient.vala
+src/services/MockNodeClient.vala
 src/models/user.vala
 src/models/channel.vala
 src/models/server.vala
 src/models/message.vala
+src/viewmodels/MainViewModel.vala

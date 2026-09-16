@@ -1,6 +1,7 @@
 
 build:
 	meson setup build --prefix=/usr
+	meson compile -C build
 install: 
 	cd build && ninja && ninja install
 uninstall: 
@@ -16,8 +17,14 @@ translations: gen-potfiles
 	cd build && ninja $$NAME-pot && ninja $$NAME-update-po
 
 run: 
-	cd build && ninja
+	meson compile -C build
 	GSETTINGS_BACKEND=keyfile TEXTDOMAINDIR=build/po LANGUAGE=$${LANGUAGE:-en} OPENHLAS_ENV=$${OPENHLAS_ENV:-dev} ./build/src/$$(grep -oP "project\('\K[^']+" meson.build | tr '[:upper:]' '[:lower:]' | awk -F. '{print $$NF}')
+
+mock: OPENHLAS_ENV=dev
+mock: run
+
+build-mock: build
+	$(MAKE) mock
 
 build-run: gen-potfiles clean build translations run
 

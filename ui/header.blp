@@ -1,0 +1,45 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $AppWindowsHeaderBox : Gtk.Box {
+  orientation: horizontal;
+
+  Adw.HeaderBar header_bar {
+    hexpand: true;
+
+    [end]
+    Gtk.MenuButton menu_button {
+      tooltip-text: _("Main Menu");
+      icon-name: "bars-symbolic";
+    }
+
+    [end]
+    Gtk.MenuButton profile_button {
+      label: "J";
+      tooltip-text: _("Your profile");
+
+      popover: Gtk.Popover profile_popover {
+        child: Gtk.Box profile_box {
+          orientation: vertical;
+          spacing: 6;
+          margin-top: 12;
+          margin-bottom: 12;
+          margin-start: 14;
+          margin-end: 14;
+
+          Gtk.Label profile_name {
+            label: _("Jan Galek");
+            xalign: 0;
+            css-classes: ["heading"];
+          }
+
+          Gtk.Label profile_username {
+            label: _("@jan_galek");
+            xalign: 0;
+            css-classes: ["dim-label"];
+          }
+        };
+      };
+    }
+  }
+}

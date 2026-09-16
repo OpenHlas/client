@@ -3,5 +3,7 @@ sources += files(
     'iMasterClient.vala',
     'masterClient.vala',
     'MockMasterClient.vala',
+    'iNodeClient.vala',
     'nodeClient.vala',
+    'MockNodeClient.vala',
 )

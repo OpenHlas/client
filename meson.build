@@ -37,6 +37,7 @@ add_project_arguments(['--vapidir', vapi_dir], language : 'vala')
 add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (meson.project_name()), language:'c')
 
 
+subdir('ui')
 subdir('data')
 subdir('src')
 subdir('po')
